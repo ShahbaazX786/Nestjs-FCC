@@ -1,0 +1,38 @@
+How to use docker in local:
+1. Download docker setup from docker website should be around 500mb in size.
+2. search for turn windows settings on and off and check windows subsystem for linux and wait for it.. dont restart after this is done.
+3. Enable virtualization from bios (to check see task manager cpu settings).
+4. Install docker and restart pc.
+5. Now skip login / registration and start the docker.
+6. Check if any instances of docker compose are running via command ** docker ps **
+7. Then create a docker-compose.yml file and add below config to it
+
+version: "3.8"
+services:
+  dev-db:
+    image: postgres:13
+    ports:
+      - "5434:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: "123"
+      POSTGRES_DB: nest
+    networks:
+      - teempoos
+
+networks:
+  teempoos:
+
+8. Remember to use double quotes and indentation is proper as this docker is Nakhrewaadi.
+9. Now run the command docker compose command to start the db. ** docker compose up dev-db -d **
+10. This should run without any errors if there are any errors then just execute below commands
+    - docker pull postgres
+    - also change postgres version from 13 to latest version in configuration file ** version:13 to version:latest to **
+11. After this you can check if the instance is running using the command ** docker ps **.
+12. You can also check the logs of the instance using the command ** docker logs container id **
+
+Note:
+- you can copy the container id from docker ps command results.
+- You can also check the version of the docker using command 
+    - ** docker version ** for full details.
+    - ** docker --version ** for only docker version details.
