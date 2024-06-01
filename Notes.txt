@@ -43,6 +43,8 @@ Note:
 - install prisma/client.
 - run npx prisma init
 - add your modals.
+- Update your db url with proper parameters in .env file.
+    - ex:DATABASE_URL="postgresql://postgres:123@localhost:5434/nest?schema=public"
 - run npx prisma migrate dev
     - give a migration name (ex:init);
 - run npx prisma studio to see if your changes are visible in local studio.
